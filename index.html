@@ -1,1 +1,290 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CJG Consulting × GP São Paulo — Registro</title>
+<style>
+  :root{
+    --bg:#0A0C12;
+    --surface:#12151D;
+    --surface-2:#181C26;
+    --line:#262B38;
+    --text:#F4F5F7;
+    --muted:#8B93A7;
+    --red:#E10600;
+    --red-dark:#8C0300;
+    --amber:#FF7A1A;
+    --green:#1FA463;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif;
+    display:flex;
+    justify-content:center;
+    padding:0 0 80px;
+  }
+  .page{width:100%;max-width:640px;}
+  .stripe{
+    height:10px;width:100%;
+    background-image:repeating-linear-gradient(45deg,#fff 0 8px,#0A0C12 8px 16px);
+    opacity:.9;
+  }
+  .hero{
+    background:linear-gradient(180deg,#151923 0%,#0A0C12 100%);
+    padding:40px 32px 32px;
+    border-bottom:1px solid var(--line);
+    position:relative;overflow:hidden;
+  }
+  .hero:after{
+    content:"";position:absolute;right:-40px;top:-40px;
+    width:220px;height:220px;border:2px solid var(--red-dark);
+    border-radius:50%;opacity:.25;
+  }
+  .eyebrow{
+    display:flex;align-items:center;gap:8px;
+    font-size:12px;letter-spacing:2px;text-transform:uppercase;
+    color:var(--amber);font-weight:700;margin-bottom:14px;
+  }
+  .eyebrow .dot{width:6px;height:6px;background:var(--red);border-radius:50%;}
+  h1{font-size:34px;line-height:1.05;margin:0 0 8px;font-weight:800;letter-spacing:-0.5px;text-transform:uppercase;}
+  h1 span{color:var(--red);}
+  .hero p{color:var(--muted);font-size:15px;margin:0;max-width:440px;}
+  .brand-row{display:flex;align-items:center;justify-content:space-between;margin-top:28px;padding-top:20px;border-top:1px solid var(--line);}
+  .brand{font-weight:800;font-size:14px;letter-spacing:1px;}
+  .brand small{display:block;font-weight:400;color:var(--muted);letter-spacing:.5px;font-size:11px;margin-top:2px;}
+  .flag{font-size:12px;color:var(--muted);letter-spacing:1px;}
+  .track{padding:32px 32px 0;position:relative;}
+  .checkpoint{display:flex;gap:18px;margin-bottom:34px;position:relative;}
+  .checkpoint:not(:last-child):before{
+    content:"";position:absolute;left:17px;top:36px;bottom:-34px;width:2px;
+    background:repeating-linear-gradient(180deg,var(--line) 0 6px, transparent 6px 12px);
+  }
+  .marker{flex:0 0 auto;width:36px;height:36px;border-radius:50%;background:var(--surface-2);border:1px solid var(--red);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:12px;color:var(--red);}
+  .cp-body{flex:1;}
+  .cp-title{font-size:12px;text-transform:uppercase;letter-spacing:1.5px;color:var(--amber);font-weight:700;margin-bottom:2px;}
+  .cp-sub{font-size:13px;color:var(--muted);margin-bottom:16px;}
+  .field{margin-bottom:16px;}
+  .field label{display:block;font-size:13px;font-weight:600;margin-bottom:6px;color:var(--text);}
+  .field label .req{color:var(--red);margin-left:2px;}
+  .field input, .field select{
+    width:100%;background:var(--surface);border:1px solid var(--line);border-radius:8px;
+    padding:11px 12px;color:var(--text);font-size:14px;font-family:inherit;
+  }
+  .field input::placeholder{color:#565F73;}
+  .field input:focus, .field select:focus{outline:none;border-color:var(--red);}
+  .row2{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+  .hint{font-size:12px;color:var(--muted);margin-top:5px;}
+  .radio-group{display:flex;gap:10px;flex-wrap:wrap;}
+  .radio-pill{
+    border:1px solid var(--line);background:var(--surface);border-radius:20px;
+    padding:9px 16px;font-size:13px;color:var(--muted);cursor:pointer;
+    display:flex;align-items:center;gap:8px;
+  }
+  .radio-pill input{accent-color:var(--red);margin:0;width:auto;}
+  .radio-pill.active{border-color:var(--red);color:var(--text);}
+  footer{padding:36px 32px 0;text-align:center;}
+  .submit{
+    width:100%;background:var(--red);color:#fff;border:none;border-radius:8px;
+    padding:14px;font-size:14px;font-weight:800;letter-spacing:1px;text-transform:uppercase;cursor:pointer;
+  }
+  .submit:disabled{opacity:.6;cursor:default;}
+  .foot-note{font-size:11px;color:var(--muted);margin-top:14px;letter-spacing:.5px;}
+  .error-text{font-size:12px;color:var(--red);margin-top:5px;display:none;}
+  .success-screen{display:none;padding:80px 32px;text-align:center;}
+  .success-screen .icon{
+    width:56px;height:56px;border-radius:50%;background:rgba(31,164,99,.12);
+    border:1px solid var(--green);display:flex;align-items:center;justify-content:center;
+    margin:0 auto 20px;font-size:24px;color:var(--green);
+  }
+  .success-screen h2{font-size:20px;margin:0 0 8px;text-transform:uppercase;letter-spacing:.5px;}
+  .success-screen p{color:var(--muted);font-size:14px;margin:0;}
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="stripe"></div>
 
+  <form id="regForm">
+    <div class="hero">
+      <div class="eyebrow"><span class="dot"></span>Fin de semana de carrera · Interlagos</div>
+      <h1>GP de <span>São Paulo</span><br>Registro de invitados</h1>
+      <p>Completa tus datos para coordinar tu acceso, traslados y hospitalidad durante el fin de semana de F1 junto a CJG Consulting.</p>
+      <div class="brand-row">
+        <div class="brand">CJG CONSULTING<small>#elnuevoestandarescloud</small></div>
+        <div class="flag">SÃO PAULO · 2026</div>
+      </div>
+    </div>
+
+    <div class="track">
+
+      <div class="checkpoint">
+        <div class="marker">P1</div>
+        <div class="cp-body">
+          <div class="cp-title">Datos personales</div>
+          <div class="cp-sub">Como aparecen en tu documento de identidad</div>
+          <div class="row2">
+            <div class="field"><label>Nombre<span class="req">*</span></label><input id="nombre" required placeholder="Ej: María"></div>
+            <div class="field"><label>Apellido<span class="req">*</span></label><input id="apellido" required placeholder="Ej: González"></div>
+          </div>
+          <div class="field"><label>Empresa<span class="req">*</span></label><input id="empresa" required placeholder="Nombre de la empresa"></div>
+          <div class="row2">
+            <div class="field"><label>Correo electrónico<span class="req">*</span></label><input id="email" type="email" required placeholder="nombre@empresa.com"></div>
+            <div class="field"><label>Celular<span class="req">*</span></label><input id="celular" required placeholder="+56 9 XXXX XXXX"></div>
+          </div>
+          <div class="field"><label>Fecha de nacimiento<span class="req">*</span></label><input id="fechaNacimiento" type="date" required></div>
+        </div>
+      </div>
+
+      <div class="checkpoint">
+        <div class="marker">P2</div>
+        <div class="cp-body">
+          <div class="cp-title">Documentación de viaje</div>
+          <div class="cp-sub">Necesaria para acreditación y traslados internacionales</div>
+          <div class="row2">
+            <div class="field"><label>Número de pasaporte<span class="req">*</span></label><input id="pasaporte" required placeholder="Según pasaporte vigente"></div>
+            <div class="field"><label>RUT<span class="req">*</span></label><input id="rut" required placeholder="12.345.678-9"></div>
+          </div>
+          <div class="field">
+            <label>¿Cuentas con seguro de viaje?<span class="req">*</span></label>
+            <div class="radio-group" id="seguroGroup">
+              <label class="radio-pill"><input type="radio" name="seguro" value="Sí, vigente para este viaje" required>Sí, vigente para este viaje</label>
+              <label class="radio-pill"><input type="radio" name="seguro" value="No, necesito contratarlo">No, necesito contratarlo</label>
+            </div>
+            <div class="error-text" id="errSeguro">Selecciona una opción</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="checkpoint">
+        <div class="marker">P3</div>
+        <div class="cp-body">
+          <div class="cp-title">Experiencia en pista</div>
+          <div class="cp-sub">Para personalizar tu experiencia el día de la carrera</div>
+          <div class="field">
+            <label>Escudería preferida<span class="req">*</span></label>
+            <select id="escuderia" required>
+              <option value="">Selecciona una escudería</option>
+              <option>Ferrari</option>
+              <option>Red Bull Racing</option>
+              <option>Mercedes-AMG</option>
+              <option>McLaren</option>
+              <option>Aston Martin</option>
+              <option>Alpine</option>
+              <option>Williams</option>
+              <option>RB</option>
+              <option>Kick Sauber</option>
+              <option>Haas</option>
+              <option>Otra</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Alergia alimenticia</label>
+            <input id="alergia" placeholder="Detállala aquí, o escribe 'Ninguna'">
+            <div class="hint">Opcional — nos ayuda a coordinar catering</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="checkpoint">
+        <div class="marker">P4</div>
+        <div class="cp-body">
+          <div class="cp-title">Contacto de emergencia</div>
+          <div class="cp-sub">A quién contactar ante cualquier imprevisto</div>
+          <div class="row2">
+            <div class="field"><label>Nombre de contacto<span class="req">*</span></label><input id="contactoEmergencia" required placeholder="Nombre completo"></div>
+            <div class="field"><label>Número de emergencia<span class="req">*</span></label><input id="numeroEmergencia" required placeholder="+56 9 XXXX XXXX"></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <footer>
+      <button type="submit" class="submit" id="submitBtn">Confirmar mi registro</button>
+      <div class="error-text" id="errGeneral" style="text-align:center;">Revisa los campos marcados con *</div>
+      <div class="foot-note">CJG Consulting · Santiago · Lima · Córdoba</div>
+    </footer>
+  </form>
+
+  <div class="success-screen" id="successScreen">
+    <div class="icon">✓</div>
+    <h2>Registro confirmado</h2>
+    <p>Gracias por registrarte al GP de São Paulo con CJG Consulting. Te contactaremos con los detalles logísticos.</p>
+  </div>
+
+  <div class="stripe"></div>
+</div>
+
+<script>
+  // Reemplaza esta URL por la de tu Web App de Apps Script (ver instrucciones)
+  var SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzJXQdKQq5YGUk6So9TYkW4ECUmNfV7c4fReLVXunLzxgfk-a1oH62DWCqb31xqOfMJ/exec";
+
+  var form = document.getElementById('regForm');
+  var pills = document.querySelectorAll('.radio-pill input');
+  pills.forEach(function(input){
+    input.addEventListener('change', function(){
+      document.querySelectorAll('#seguroGroup .radio-pill').forEach(function(p){p.classList.remove('active');});
+      input.closest('.radio-pill').classList.add('active');
+    });
+  });
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var errGeneral = document.getElementById('errGeneral');
+    var errSeguro = document.getElementById('errSeguro');
+    errGeneral.style.display = 'none';
+    errSeguro.style.display = 'none';
+
+    if(!form.checkValidity()){
+      errGeneral.style.display = 'block';
+      form.reportValidity();
+      return;
+    }
+    var seguro = form.querySelector('input[name="seguro"]:checked');
+    if(!seguro){
+      errSeguro.style.display = 'block';
+      return;
+    }
+
+    var data = {
+      nombre: document.getElementById('nombre').value,
+      apellido: document.getElementById('apellido').value,
+      empresa: document.getElementById('empresa').value,
+      email: document.getElementById('email').value,
+      celular: document.getElementById('celular').value,
+      fechaNacimiento: document.getElementById('fechaNacimiento').value,
+      pasaporte: document.getElementById('pasaporte').value,
+      rut: document.getElementById('rut').value,
+      seguroViaje: seguro.value,
+      escuderia: document.getElementById('escuderia').value,
+      alergia: document.getElementById('alergia').value || 'Ninguna',
+      contactoEmergencia: document.getElementById('contactoEmergencia').value,
+      numeroEmergencia: document.getElementById('numeroEmergencia').value
+    };
+
+    var btn = document.getElementById('submitBtn');
+    btn.disabled = true;
+    btn.textContent = 'Enviando...';
+
+    fetch(SCRIPT_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: {'Content-Type': 'text/plain'},
+      body: JSON.stringify(data)
+    }).then(function(){
+      form.style.display = 'none';
+      document.getElementById('successScreen').style.display = 'block';
+    }).catch(function(){
+      btn.disabled = false;
+      btn.textContent = 'Confirmar mi registro';
+      errGeneral.textContent = 'No se pudo enviar. Intenta nuevamente.';
+      errGeneral.style.display = 'block';
+    });
+  });
+</script>
+</body>
+</html>
